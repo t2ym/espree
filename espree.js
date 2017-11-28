@@ -62,10 +62,11 @@ var astNodeTypes = require("./lib/ast-node-types"),
     commentAttachment = require("./lib/comment-attachment"),
     TokenTranslator = require("./lib/token-translator"),
     acornJSX = require("acorn-jsx/inject"),
+    acornDynamicImport = require("acorn-dynamic-import/lib/inject").default,
     rawAcorn = require("acorn");
 
 
-var acorn = acornJSX(rawAcorn);
+var acorn = acornDynamicImport(acornJSX(rawAcorn));
 var DEFAULT_ECMA_VERSION = 5;
 var lookahead,
     extra,
@@ -499,7 +500,8 @@ function tokenize(code, options) {
     var acornOptions = {
         ecmaVersion: DEFAULT_ECMA_VERSION,
         plugins: {
-            espree: true
+            espree: true,
+            dynamicImport: true
         }
     };
 
@@ -611,7 +613,8 @@ function parse(code, options) {
         acornOptions = {
             ecmaVersion: DEFAULT_ECMA_VERSION,
             plugins: {
-                espree: true
+                espree: true,
+                dynamicImport: true
             }
         };
 
