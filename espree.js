@@ -504,7 +504,7 @@ function tokenize(code, options) {
         plugins: {
             espree: true,
             dynamicImport: true,
-            importMeta: true,
+            importMeta: true
         }
     };
 
@@ -618,7 +618,7 @@ function parse(code, options) {
             plugins: {
                 espree: true,
                 dynamicImport: true,
-                importMeta: true,
+                importMeta: true
             }
         };
 
